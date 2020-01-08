@@ -114,6 +114,12 @@ class Frontend extends Controller
         $this->loadlang($controllername);
         $this->assign('site', $site);
         $this->assign('config', $config);
+
+        $this->myAssign();
+    }
+
+    private  function  myAssign(){
+        $this->assign('asset_version',time());
     }
 
     /**
