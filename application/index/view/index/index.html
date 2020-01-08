@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Document</title>
+    <title>输液袋监控后台</title>
 
 
     <link rel="stylesheet" href="__CDN__/assets/pc/css/common.css?v={$asset_version}">
@@ -35,10 +35,10 @@
                 </div>
             </div>
             <div class="show_time">
-                12:02:02
+
             </div>
             <div class="show_date">
-                2019-01-12
+
             </div>
 
             <div class="function_setting">
@@ -1289,4 +1289,44 @@
 
 
 </body>
+
+<script>
+
+    $(document).ready(function () {
+
+        var time_interval =setInterval(function () {
+            $('.show_time').text(get_time());
+            $('.show_date').text(get_date());
+        },1000);
+
+    });
+
+
+
+    function get_date() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth()+1;
+        var day = date.getDate();
+        return year + "/" + fillToTwo(month) + "/" + fillToTwo(day);
+    }
+
+    function get_time() {
+        var date = new Date();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+        return fillToTwo(hour) + ":" + fillToTwo(minute) + ":" + fillToTwo(second)
+    }
+
+    function fillToTwo(str) {
+        if(Number(str) <10){
+            return '0'+ str;
+        }
+        return str;
+    }
+
+
+</script>
+
 </html>
